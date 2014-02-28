@@ -1,9 +1,6 @@
 /**
  * @author Roseanne
  */
-/**
- * @author Roseanne
- */
 
 /*
  * Project steps:
@@ -12,10 +9,64 @@
  3. Load data
  4. Render the chart
   
- */
-//I am adding a function here that is the "Polo" of the google name "Marco."
+*/
+
+//I am adding a function here that will retrieve the data. The name of my data is joblessInfo.
+//I must remember to check the web page only in Firefox and not Chrome to ensure the data has been loaded.
+
+function infoLoaded(joblessInfo){
+	
+	console.log(joblessInfo);
+	
+	//I will add a variable to put a lable on "Observations" in the data in my JSON file.
+	
+	var observationsArray = joblessInfo.observations;
+	
+		console.log(observations);
+		
+	//Now I'm going to create a container to hold all the other lists.
+	
+	var masterList = [];
+		
+	//To create my visualiazation, I need to convert my JSON data to an array of arrays.
+	//To do this, I will have to use for loops to loop individual data point arrays
+	//from the "date" and "value" data and use it to drive the visualization. 
+	//I'm using the length prperty of the array to make sure the "observations" cycles 
+	//through all the data. 
+	//Then I will add a var to tell the computer to get the apropriate object.
+	//Next, I'll create a little array with just "date" and "value."
+	//Final thing is to put the data array into the data list.
+	//Then the masterList should be populated with an array of arrays that is all
+	//the observations containing only the "date" and "value."
+	
+	for(var i=0; i<observationsArray.length; i++) {
+		var indieObject = observationsArray[i];	
+		var mainDataArray = [indieObject.date, indieObject.value];	
+		masterList.push(mainDataArray);
+}
+
+	console.log(masterList);
+	
+	//Now I am going to use an array to data table function and pass the set of arrays 
+	//I created to generate the data table to pass to the visualization function.
+	
+	var masterList =google.visualization.arrayToDataTable(masterList);
+	//I'm going to create a chart variable. The document.getElementByID is the 
+	//equivalent of the jQuery $("#divName"). I must add the raw JavaScript command
+	//"mainChartDiv" here.
+	var chart = new google.visualization.LineChart(document.getElementById("mainChartDiv"));
+        chart.draw(data, options);
+}
+          
+
+//I am adding a function here that is the "Polo" of the google name "Marco."*/
+
 function googleProjectLoaded(){
-	console.log("viz loaded");
+	console.log("my project loaded");
+/*I'm going to set up my jQuery call with a get command to get the data.
+ "$.get is the "Marco" and "infoLoaded"" is the "Polo."
+ */
+		$.get("GoogleChart.json", infoLoaded, "json");	
 		
 }
 
@@ -32,7 +83,8 @@ function pageReady(){
 
 /*I will add a callback name via a document ready function.
 Document ready is the "Marco" and the function is the "Polo."*/
-$(document).ready(pageReady)
+$(document).ready(pageReady){
 
 console.log("js loaded");
 
+}
