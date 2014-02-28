@@ -22,11 +22,18 @@ function infoLoaded(joblessInfo){
 	
 	var observationsArray = joblessInfo.observations;
 	
-		console.log(observations);
+		console.log(joblessInfo.observations);
 		
 	//Now I'm going to create a container to hold all the other lists.
 	
 	var masterList = [];
+	
+	//I must create a var with a "new header" list to adjust the "Unknown header type 548" 
+	//line error that appears in Firefox.
+	var newHeader = ["Date", "Jobless Data"];
+	
+	masterList.push(newHeader);
+	
 		
 	//To create my visualiazation, I need to convert my JSON data to an array of arrays.
 	//To do this, I will have to use for loops to loop individual data point arrays
@@ -41,21 +48,31 @@ function infoLoaded(joblessInfo){
 	
 	for(var i=0; i<observationsArray.length; i++) {
 		var indieObject = observationsArray[i];	
-		var mainDataArray = [indieObject.date, indieObject.value];	
+		var mainDataArray = [indieObject.date, Number(indieObject.value)];	
 		masterList.push(mainDataArray);
 }
+	//I am creating an object to onvert a string to a number.
+	var num = new Number(100);
 
+	console.log(masterList);
+		
+	//I am creating a variable for the chart title with a title property.
+	//This will be the header of my chart.
+	var options = {
+		title: "Acme Shoe Company Performance"
+	};
+		
 	console.log(masterList);
 	
 	//Now I am going to use an array to data table function and pass the set of arrays 
 	//I created to generate the data table to pass to the visualization function.
 	
-	var masterList =google.visualization.arrayToDataTable(masterList);
+	var mainDataTable = google.visualization.arrayToDataTable(masterList);
 	//I'm going to create a chart variable. The document.getElementByID is the 
 	//equivalent of the jQuery $("#divName"). I must add the raw JavaScript command
 	//"mainChartDiv" here.
-	var chart = new google.visualization.LineChart(document.getElementById("mainChartDiv"));
-        chart.draw(data, options);
+	var mainChart = new google.visualization.LineChart(document.getElementById("mainChartDiv"));
+	mainChart.draw(mainDataTable, options);
 }
           
 
@@ -83,8 +100,7 @@ function pageReady(){
 
 /*I will add a callback name via a document ready function.
 Document ready is the "Marco" and the function is the "Polo."*/
-$(document).ready(pageReady){
+$(document).ready(pageReady)
 
 console.log("js loaded");
 
-}
