@@ -14,7 +14,10 @@
   
  */
 //I am adding a function here that is the "Polo" of the google name "Marco."
-function googleProjectLoaded
+function googleProjectLoaded(){
+	console.log("viz loaded");
+		
+}
 
 
 /*I am adding a function  here that is the "Polo."*/
@@ -22,7 +25,7 @@ function pageReady(){
 	console.log("page done")
 	//Step 1 is now done. Next step is to load the Google charting package. Write the "google load" function
 	//followed by a list of parameters. The google name is the "Marco" and the function name is the "Polo."
-	google.load("visualization", "1", {packages["corechart"], "callback":googleProjectLoaded})
+	google.load("visualization", "1", {packages:["corechart"], "callback":googleProjectLoaded})
 
 	
 }
