@@ -51,7 +51,7 @@ function infoLoaded(joblessInfo){
 		var mainDataArray = [indieObject.date, Number(indieObject.value)];	
 		masterList.push(mainDataArray);
 }
-	//I am creating an object to onvert a string to a number.
+	//I am creating an object to convert a string to a number.
 	var num = new Number(100);
 
 	console.log(masterList);
@@ -88,7 +88,7 @@ function googleProjectLoaded(){
 }
 
 
-/*I am adding a function  here that is the "Polo."*/
+/*I am adding a function here that is the "Polo."*/
 function pageReady(){
 	console.log("page done")
 	//Step 1 is now done. Next step is to load the Google charting package. Write the "google load" function
@@ -100,7 +100,7 @@ function pageReady(){
 
 /*I will add a callback name via a document ready function.
 Document ready is the "Marco" and the function is the "Polo."*/
-$(document).ready(pageReady)
+$(document).ready(pageReady);
 
 console.log("js loaded");
 
