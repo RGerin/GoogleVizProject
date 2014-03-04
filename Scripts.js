@@ -103,4 +103,3 @@ Document ready is the "Marco" and the function is the "Polo."*/
 $(document).ready(pageReady);
 
 console.log("js loaded");
-
